@@ -30,7 +30,7 @@ public:
 	
 		this->amount = amount;
 		this->optn = option;
-		
+		cout << "Entr your option : ";
 		cin >> option;
 		switch (option) {
 		case 1:
