@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
@@ -8,13 +9,15 @@ class BankAccount {
 private:
     string accountNumber;
     string password;
+    string pin; // New member variable for pin number
     double balance;
     int accountType; // 1: Saving, 2: Business, 3: Industrial
 
 public:
-    BankAccount(string accNum, string pass, int type) {
+    BankAccount(string accNum, string pass, string pinNum, int type) {
         accountNumber = accNum;
         password = pass;
+        pin = pinNum; // Initialize pin number
         balance = 0.0;
         accountType = type;
     }
@@ -25,6 +28,10 @@ public:
 
     bool verifyPassword(string pass) {
         return password == pass;
+    }
+
+    bool verifyPin(string pinNum) {
+        return pin == pinNum;
     }
 
     double getBalance() {
@@ -73,10 +80,19 @@ public:
 class BankServer {
 private:
     vector<BankAccount> accounts;
+    int maxLoginAttempts; // New member variable for maximum login attempts
+    int loginAttempts; // New member variable to track login attempts
+    time_t lastActivityTime; // New member variable to track last activity time
 
 public:
-    BankAccount* createAccount(string accNum, string pass, int type) {
-        BankAccount newAccount(accNum, pass, type);
+    BankServer() {
+        maxLoginAttempts = 3;
+        loginAttempts = 0;
+        lastActivityTime = time(0);
+    }
+
+    BankAccount* createAccount(string accNum, string pass, string pin, int type) {
+        BankAccount newAccount(accNum, pass, pin, type);
         accounts.push_back(newAccount);
         return &accounts.back(); // Return a pointer to the newly created account
     }
@@ -90,6 +106,18 @@ public:
         return nullptr; // Account not found
     }
 
+    bool sendOTP(string phoneNumber) {
+        // Code to send OTP through SMS
+        // Return true if OTP sent successfully, false otherwise
+        return true; // Assuming OTP is always sent successfully for this example
+    }
+
+    bool verifyOTP(string otp) {
+        // Code to verify OTP
+        // Return true if OTP is valid, false otherwise
+        return otp == "1234"; // Assuming OTP is "1234" for this example
+    }
+
     void showMenu() {
         cout << "Menu Options:" << endl;
         cout << "1. Create Account" << endl;
@@ -98,38 +126,77 @@ public:
     }
 
     void handleMenuOption(int option) {
+        if (option == 2 && difftime(time(0), lastActivityTime) > 300) {
+            cout << "Session timed out. Please log in again." << endl;
+            return;
+        }
+        if (option == 2) {
+            loginAttempts = 0;
+        }
+
         switch (option) {
         case 1: {
-            string accNum, pass;
+            string accNum, pass, pin;
             int accType;
             cout << "Enter Account Number: ";
             cin >> accNum;
-            cout << "Enter Password: ";
+            cout << "Enter Password (at least 8 characters with uppercase, lowercase, and digits): ";
             cin >> pass;
+            cout << "Enter Pin (4 digits): ";
+            cin >> pin;
             cout << "Enter Account Type (1 for Saving, 2 for Business, 3 for Industrial): ";
             cin >> accType;
-            createAccount(accNum, pass, accType);
+            createAccount(accNum, pass, pin, accType);
             cout << "Account created successfully!" << endl;
             break;
         }
         case 2: {
-            string inputAccNum, inputPass;
+            string inputAccNum, inputPass, inputPin;
             cout << "Enter Account Number: ";
             cin >> inputAccNum;
             cout << "Enter Password: ";
             cin >> inputPass;
             BankAccount* userAccount = findAccount(inputAccNum);
             if (userAccount != nullptr && userAccount->verifyPassword(inputPass)) {
-                int menuOption;
-                do {
-                    showAccountMenu();
-                    cout << "Enter your choice: ";
-                    cin >> menuOption;
-                    handleAccountMenuOption(userAccount, menuOption);
-                } while (menuOption != 5);
+                cout << "Enter Pin: ";
+                cin >> inputPin;
+                if (userAccount->verifyPin(inputPin)) {
+                    string phoneNumber;
+                    cout << "Enter Phone Number: ";
+                    cin >> phoneNumber;
+                    if (sendOTP(phoneNumber)) {
+                        string otp;
+                        cout << "Enter OTP sent to your phone: ";
+                        cin >> otp;
+                        if (verifyOTP(otp)) {
+                            lastActivityTime = time(0); 
+                            int menuOption;
+                            do {
+                                showAccountMenu();
+                                cout << "Enter your choice: ";
+                                cin >> menuOption;
+                                handleAccountMenuOption(userAccount, menuOption);
+                            } while (menuOption != 5);
+                        }
+                        else {
+                            cout << "Invalid OTP. Please try again." << endl;
+                        }
+                    }
+                    else {
+                        cout << "Failed to send OTP. Please try again later." << endl;
+                    }
+                }
+                else {
+                    cout << "Invalid pin. Please try again." << endl;
+                }
             }
             else {
                 cout << "Invalid account number or password. Please try again." << endl;
+                loginAttempts++;
+                if (loginAttempts >= maxLoginAttempts) {
+                    cout << "Too many failed login attempts. Please try again later." << endl;
+                    exit(1);
+                }
             }
             break;
         }
@@ -188,6 +255,8 @@ public:
 };
 
 int main() {
+    srand(time(0));
+
     BankServer bankServer;
 
     int menuOption;
