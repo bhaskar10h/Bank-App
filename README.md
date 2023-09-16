@@ -11,3 +11,26 @@ If you have any idea, it would be better you people make some changes
 #Even a simple change is appreciated.
 
 #this is a program
+
+
+![Screenshot 2023-09-16 154628](https://github.com/bhaskar10h/Bank-Details/assets/112790780/a17d1303-615b-469a-94f5-29acb877876f)
+
+![Screenshot 2023-09-16 154723](https://github.com/bhaskar10h/Bank-Details/assets/112790780/54c801c2-bbaa-4ec3-a232-64747196d722)
+
+![Screenshot 2023-09-16 154801](https://github.com/bhaskar10h/Bank-Details/assets/112790780/5069b82a-6461-4170-b682-e947515468be)
+
+![Screenshot 2023-09-16 154837](https://github.com/bhaskar10h/Bank-Details/assets/112790780/e1d16061-ff24-4177-b92d-b5d4deb8b735)
+
+![Screenshot 2023-09-16 154907](https://github.com/bhaskar10h/Bank-Details/assets/112790780/c4a2cc2d-c3c5-405c-842d-d97698d392a4)
+
+![Screenshot 2023-09-16 154932](https://github.com/bhaskar10h/Bank-Details/assets/112790780/5c3e832d-4a76-4f23-9aaf-6f866e5e3083)
+
+![Screenshot 2023-09-16 154954](https://github.com/bhaskar10h/Bank-Details/assets/112790780/0d46b7a9-ce81-49b7-825f-80215f20043b)
+
+![Screenshot 2023-09-16 155021](https://github.com/bhaskar10h/Bank-Details/assets/112790780/e30618f2-6a9e-4bc8-b539-a1de205797cf)
+
+![Screenshot 2023-09-16 155049](https://github.com/bhaskar10h/Bank-Details/assets/112790780/92f7aeb3-a9f3-4422-b9cc-8ec41de372d6)
+
+![Screenshot 2023-09-16 155104](https://github.com/bhaskar10h/Bank-Details/assets/112790780/448406f5-3b37-4c75-ae49-affac4c4759b)
+
+![Screenshot 2023-09-16 155119](https://github.com/bhaskar10h/Bank-Details/assets/112790780/1bd8fc5b-216e-4d94-afc3-0104ec91b980)
