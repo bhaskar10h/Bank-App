@@ -1,4 +1,4 @@
-# Bank-Details
+# Bank-Application
 
 Here I have developed a simple program to run the 
 
