@@ -50,6 +50,7 @@ Exiting from the Application
 ![Screenshot 2023-09-16 164936](https://github.com/bhaskar10h/Bank-App/assets/112790780/eb4201e9-f832-48a2-b1ba-704e5d796e07)
 For Additional Authentication, I am writing these mentioned function 
 but dont know which API to use
-if anyone knows do ping me
+if anyone knows do ping me to my Email : 
+bhaskar96.surya@gmail.com
 ------------------------------------------------------------------------------------------------------------------------------*/
 
