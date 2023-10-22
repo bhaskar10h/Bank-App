@@ -46,11 +46,5 @@ Error occured after login-ing into unregistered account
 ![Screenshot 2023-09-16 155119](https://github.com/bhaskar10h/Bank-Details/assets/112790780/1bd8fc5b-216e-4d94-afc3-0104ec91b980)
 Exiting from the Application
 
-/*------------------------------------------------------------------------------------------------------------------------------
-![Screenshot 2023-09-16 164936](https://github.com/bhaskar10h/Bank-App/assets/112790780/eb4201e9-f832-48a2-b1ba-704e5d796e07)
-For Additional Authentication, I am writing these mentioned functions
-but dont know which API to use
-if anyone knows do ping me to my Email : 
-bhaskar96.surya@gmail.com
-------------------------------------------------------------------------------------------------------------------------------*/
+
 
